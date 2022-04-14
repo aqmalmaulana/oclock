@@ -11,7 +11,7 @@
 
 </head>
 <body>
-    <!-- Navbar -->
+    <!-- Navbar Start in here-->
     <div class="navbar">
         <a href="https://aqmalmaulana.github.io"><img src="img/Logo Web.png" alt="Logo O'clock"></a>
         <div class="container-toggle">
@@ -21,26 +21,16 @@
             </div>
             <p>Dark</p>
         </div>
-        <div class="hamburger-menu">
+        <div id="hamburger-menu">
             <span></span>
             <span></span>
             <span></span>
         </div>
     </div>
-    <!-- Navbar -->
+    <!-- Navbar End in here-->  
 
-    <!-- Full Content -->
     <section class="container">
-        <!-- Menu Bar -->
-        <section class="section-left">
-            <!-- <div class="card">
-                <i class="bi bi-alarm"></i>
-                <p>Alarm</p>
-            </div>
-            <div class="card">
-                <i class="bi bi-stopwatch"></i>
-                <p>Stopwatch</p>
-            </div> -->
+        <div class="container-left">
             <div class="card">
                 <i class="bi bi-clock"></i>
                 <p>Clock</p>
@@ -56,59 +46,55 @@
                 </div>
                 <p>Dark</p>
             </div>
-        </section>
-        <!-- Menu Bar -->
-
-        <!-- Content-->
-        <section class="section-right">
-            <div class="container-section-right">
-                <!-- Countdown-->
-                <div class="container-time countdown-time" id="countdown-bar">
-                    <div class="tools">
-                        <i class="bi bi-arrows-fullscreen"></i>
-                    </div>
-                    <div id="timer">
-                        <div class="block-time1">
-                            <div class="time">
-                                <p class="timer" id="day">00</p>
-                                <p class="placeholder">88</p>
-                                <p class="timer-text">Day</p>
-                            </div>
-            
-                            <div class="colon">
-                                :
-                            </div>
-            
-                            <div class="time">
-                                <p class="timer" id="hour">00</p>
-                                <p class="placeholder">88</p>
-                                <p class="timer-text">Hour</p>
-                            </div>
+        </div>
+        <div class="container-right">
+            <!-- Countdown Start in here -->
+            <section class="container-time countdown" id="countdown">
+                <div class="tools">
+                    <i class="bi bi-arrows-fullscreen"></i>
+                </div>
+                <div id="timer">
+                    <div class="block time1">
+                        <div class="time">
+                            <p class="timer" id="day">00</p>
+                            <p class="placeholder">88</p>
+                            <p class="timer-text">Day</p>
                         </div>
         
-                        <div class="colon" id="colon">
+                        <div class="colon">
                             :
                         </div>
-
-                        <div class="block-time2">
-                            <div class="time">
-                                <p class="timer" id="minute">00</p>
-                                <p class="placeholder">88</p>
-                                <p class="timer-text">Minute</p>
-                            </div>
-            
-                            <div class="colon">
-                                :
-                            </div>
-            
-                            <div class="time">
-                                <p class="timer" id="second">00</p>
-                                <p class="placeholder">88</p>
-                                <p class="timer-text">Second</p>
-                            </div>
+        
+                        <div class="time">
+                            <p class="timer" id="hour">00</p>
+                            <p class="placeholder">88</p>
+                            <p class="timer-text">Hour</p>
                         </div>
-                        
                     </div>
+    
+                    <div class="colon" id="colon">
+                        :
+                    </div>
+
+                    <div class="block time2">
+                        <div class="time">
+                            <p class="timer" id="minute">00</p>
+                            <p class="placeholder">88</p>
+                            <p class="timer-text">Minute</p>
+                        </div>
+        
+                        <div class="colon">
+                            :
+                        </div>
+        
+                        <div class="time">
+                            <p class="timer" id="second">00</p>
+                            <p class="placeholder">88</p>
+                            <p class="timer-text">Second</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="btnset-cancel">
                     <div id="set-time">
                         Set Time
                     </div>
@@ -116,83 +102,17 @@
                         Cancel Time
                     </div>
                 </div>
-                <!-- Countdown-->
+            </section>
+            <!-- Countdown End in here -->
 
-                <!-- Clock-->
-                <div class="container-time" id="clock">
-                    <div class="date-information">
-                        <div class="tools">
-                            <i class="bi bi-arrows-fullscreen"></i>
-                        </div>
-                        <div class="information">
-                            <div class="clock-date">
-                                <div class="time">
-                                    <p class="timer" id="date-clock">00</p>
-                                    <p class="placeholder">88</p>
-                                </div>
-                                <div class="time">
-                                    <p class="timer" id="month-clock">00</p>
-                                    <p class="placeholder">88</p>
-                                </div>
-                                <div class="time">
-                                    <p class="timer" id="year-clock">0000</p>
-                                    <p class="placeholder">8888</p>
-                                </div>
-                            </div>
-                            <div class="clock-day">
-                                <div class="time">
-                                    <p class="timer" id="name-day">Jum'at</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="clock-time">
-                        <div class="time">
-                            <p class="timer" id="hour-clock">00</p>
-                            <p class="placeholder">88</p>
-                            <p class="timer-text">Hour</p>
-                        </div>
-    
-                        <div class="colon">
-                            :
-                        </div>
-    
-                        <div class="time">
-                            <p class="timer" id="minute-clock">00</p>
-                            <p class="placeholder">88</p>
-                            <p class="timer-text">Minute</p>
-                        </div>
-    
-                        <div class="colon">
-                            :
-                        </div>
-    
-                        <div class="time">
-                            <p class="timer" id="second-clock">00</p>
-                            <p class="placeholder">88</p>
-                            <p class="timer-text">Second</p>
-                        </div>
-    
-                        <!-- <div class="colon">
-                            :
-                        </div>
-    
-                        <div class="time">
-                            <p class="timer" id="milisecond-clock">000</p>
-                            <p class="placeholder">888</p>
-                            <p class="timer-text">Milisecond</p>
-                        </div> -->
-                    </div>
-                </div>
-                <!-- Clock-->
-            </div>
-        </section>
-        <!-- Content-->
+            <!-- Clock Start in here -->
+            <!-- <section class="container-time clock" id="clock">
+
+            </section> -->
+            <!-- Clock End in here -->
+        </div>
     </section>
-    <!-- Full Content -->
     
-
     <div class="container-form" id="container-form">
        <section id="form">
            <h1>Set Time</h1>
