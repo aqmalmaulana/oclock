@@ -275,7 +275,7 @@ section.container .container-right section.container-time .tools {
     color: var(--navbarColor);
 }
 section.container .container-right section.container-time #timer {
-    font-family: var(--fontdigital);
+    font-family: var(--fontpoppins);
     display: flex;
     align-items: center;
     justify-content: center;
