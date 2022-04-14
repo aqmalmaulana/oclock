@@ -267,6 +267,11 @@ body {
     align-items: center;
 }
 /* Timer Text */
+.block-time1,
+.block-time2 {
+    display: flex;
+    justify-content: end;
+}
 .container-time {
     position: relative;
     width: 95%;
@@ -464,6 +469,16 @@ div.countdown-time .tools {
 }
 
 @media only screen and (max-width: 600px) {
+    #timer div#colon {
+        display: none;
+    }
+    .countdown-time #timer .time,
+    .countdown-time #timer .colon {
+        font-size: 20vw;
+    }
+    #timer {
+        display: block;
+    }
     .container-toggle p {
         color: var(--color1);
     }
@@ -480,18 +495,29 @@ div.countdown-time .tools {
         display: none;
     }
     .navbar {
+        height: initial;
         padding: 10px 40px;
     }
     .container {
+        padding-top: 60px;
         grid-template-columns: 1fr;
+    }
+    .information .time {
+        font-size: 48px;
     }
     .section-left {
         transform: translateY(-300px);
         display: none;
         position: fixed;
         z-index: 10;
+        box-shadow: 5px 5px 10px solid var(--color1);
     }
     .container .container-toggle {
         display: flex;
+        padding: 20px;
+        box-shadow: 0 5px 10px solid var(--color5);
+    }
+    .navbar img {
+        width: 150px;
     }
 }
