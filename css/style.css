@@ -383,7 +383,7 @@ div.container-form#container-form #form {
         flex-direction: column;
     }
     section.container .container-right section.container-time #timer .time {
-        font-size: 24vw;
+        font-size: 10em;
     }
     section.container .container-right section.container-time #timer .colon#colon {
         display: none;
