@@ -270,7 +270,7 @@ body {
 .block-time1,
 .block-time2 {
     display: flex;
-    justify-content: end;
+    justify-content: center;
 }
 .container-time {
     position: relative;
@@ -471,6 +471,7 @@ div.countdown-time .tools {
 @media only screen and (max-width: 600px) {
     .time .timer-text {
         font-size: 20px;
+        margin: 20px 0;
     }
     #timer div#colon {
         display: none;
