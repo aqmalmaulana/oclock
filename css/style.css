@@ -514,7 +514,7 @@ div.countdown-time .tools {
     }
     .container .container-toggle {
         display: flex;
-        padding: 20px;
+        margin: 20px;
         box-shadow: 0 5px 10px solid var(--color5);
     }
     .navbar img {
