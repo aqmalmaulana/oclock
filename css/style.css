@@ -305,7 +305,8 @@ section.container .container-right section.container-time #timer .time p.placeho
 section.container .container-right section.container-time #timer .time .timer-text {
     font-size: 30px;
     color: var(--placeholdercolor);
-    position: relative;
+    position: absolute;
+    bottom: -13px;
 }
 section.container .container-right section.container-time #timer .colon {
     font-size: 15vw;
