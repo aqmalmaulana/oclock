@@ -469,6 +469,9 @@ div.countdown-time .tools {
 }
 
 @media only screen and (max-width: 600px) {
+    .time .timer-text {
+        font-size: 20px;
+    }
     #timer div#colon {
         display: none;
     }
@@ -495,11 +498,12 @@ div.countdown-time .tools {
         display: none;
     }
     .navbar {
+        position: relative;
         height: initial;
         padding: 10px 40px;
     }
     .container {
-        padding-top: 60px;
+        padding-top: 0;
         grid-template-columns: 1fr;
     }
     .information .time {
