@@ -1,20 +1,4 @@
-// Universal Code
-function addZeroNumber(chooseCase, i) {
-    switch(chooseCase) {
-        case 'ALL' :
-            if ( i < 10 ) {
-                i = "0" + i
-            }
-            break;
-        case 'MILISECOND' :
-            if ( i < 100 && i > 10 ) {
-                i = "0" + i 
-            } else if ( i < 10 ) {
-                i = "00" + i
-            }
-    }
-    return i;
-}
+let getTimeNow = new Date();
 
 // Theme Mode Start In Here
 let themeLocalStorage = localStorage.getItem('Theme')
@@ -69,18 +53,27 @@ for ( let i = 0; i <elHamMenu.length; i++ ) {
         
     })
 }
-
+chooseMenuBar('Countdown')
 // Hamburger Menu End in here
 
 // Menu Bar Start in here
-const menuBar = document.getElementsByClassName('card');
+let menuBar = document.getElementsByClassName('card');
+let containerCountdown = document.getElementById('countdown');
+let containerClock = document.getElementById('clock')
 function chooseMenuBar(activity){
+    let menuBar = document.getElementsByClassName('card');
+    let containerCountdown = document.getElementById('countdown');
+    let containerClock = document.getElementById('clock')
     switch(activity) {
         case 'Clock':
+            containerCountdown.style.display = "none";
+            containerClock.style.display = "flex";
             menuBar[0].classList.add('active');
             menuBar[1].classList.remove('active');
             break;
         case 'Countdown':
+            containerCountdown.style.display = "flex";
+            containerClock.style.display = "none";
             menuBar[1].classList.add('active');
             menuBar[0].classList.remove('active');
             break;
@@ -96,17 +89,15 @@ for ( let i = 0; i < menuBar.length;i++ ){
 // Menu Bar End in here
 
 // Fullscreen Start in here
-// const btnClockFullScrn = document.querySelector('#clock .bi-arrows-fullscreen');
-const btnCountdownFullScrn = document.querySelector('section.container .container-right section.container-time .tools .bi-arrows-fullscreen');
+const btnClockFullScrn = document.querySelector('#clock .bi-arrows-fullscreen');
+const btnCountdownFullScrn = document.querySelector('#countdown .bi-arrows-fullscreen');
 
-// btnClockFullScrn.addEventListener('click', ()=> {
-//     let menuBarClock = document.getElementById('clock');
-//     FullscrnClock(menuBarClock)
-// })
+btnClockFullScrn.addEventListener('click', ()=> {
+    FullscrnClock(containerClock)
+})
 
 btnCountdownFullScrn.addEventListener('click', ()=> {
-    let menuBarCountdown = document.getElementById('countdown');
-    FullscrnClock(menuBarCountdown);
+    FullscrnClock(containerCountdown);
 })
 function FullscrnClock(el) {
     if(el.requestFullscreen) {
@@ -118,3 +109,154 @@ function FullscrnClock(el) {
     }
 }
 // Fullscreen End in here
+
+// Form Start in here
+
+// Open Form / Btn Set
+const btnSetTime = document.getElementById('set-time');
+const btnCancelTime = document.getElementById('cancel-time');
+const btnCancelForm = document.getElementById('cancel');
+const btnSaveForm = document.getElementById('save');
+const getDate = document.getElementById('date');
+const getDateTime = document.getElementById('datetime');
+const getTittle = document.getElementById('tittle');
+const containerForm = document.getElementById('container-form');
+
+// Function Form Start in here
+function setDate_DateTimeToMinMaxValue(value, day) {
+    let setToNvalue = new Date(getTimeNow.getTime() + 1000 * 60 * 60 * 24 * day);
+    getDate.setAttribute(`${value}`,`${setToNvalue.getFullYear()}-${addZeroNumber('ALL',setToNvalue.getMonth() + 1)}-${addZeroNumber('ALL',setToNvalue.getDate())}`);
+}
+
+// Mindate = TimeNow
+setDate_DateTimeToMinMaxValue('min', 0)
+
+// Value = 10dayfrom now
+setDate_DateTimeToMinMaxValue('value', 10)
+
+// Maxdate = 100 days from now
+setDate_DateTimeToMinMaxValue('max', 100)
+// Function Form End in here
+
+btnSetTime.addEventListener('click', ()=> {
+    containerForm.style.display = "flex";
+})
+
+// Cancel Form
+btnCancelForm.addEventListener('click', ()=> {
+    containerForm.style.display = "none";
+})
+
+// Save Form
+btnSaveForm.addEventListener('click', ()=> {
+    countdownTimer(getDate.value, getDateTime.value)
+    SyncToLocalStorage('SET', getDate.value,getDateTime.value,getTittle.value)
+    containerForm.style.display = "none";
+    btnSetTime.style.display = "none";
+    btnCancelTime.style.display = "block";
+})
+// Cancel Countdown Time
+btnCancelTime.addEventListener('click', ()=> {
+    TimeforCountdown();
+    btnSetTime.style.display = "block";
+    btnCancelTime.style.display = "none";
+    SyncToLocalStorage('CANCEL')
+    clearInterval(countdownInterval)
+})
+// Form End in here
+
+// Countdown Start in here
+// Countdown interval
+let countdownInterval;
+
+const newDayTime = document.getElementById('day');
+const newHourTime = document.getElementById('hour');
+const newMinuteTime = document.getElementById('minute');
+const newSecondTime = document.getElementById('second');
+
+function countdownTimer(date, datetime){
+    countdownInterval = setInterval(() => {
+        getTimeNow = new Date().getTime();
+        const getTimeUser = new Date(`${date}T${datetime}`).getTime();
+        const differentDate = getTimeUser - getTimeNow;
+        const dayTime = addZeroNumber('ALL',Math.floor(differentDate / (1000 * 60 * 60 * 24)));
+        const hourTime = addZeroNumber('ALL',Math.floor(differentDate % (1000 * 60 * 60 * 24) / (1000 * 60 * 60)));
+        const minuteTime = addZeroNumber('ALL',Math.floor(differentDate % (1000 * 60 * 60) / (1000 * 60)));
+        const secondTime = addZeroNumber('ALL',Math.floor(differentDate % (1000 * 60) / 1000));
+
+        TimeforCountdown(dayTime, hourTime, minuteTime, secondTime)
+
+        if ( differentDate <= 0 ) {
+            btnCountdownFullScrn.click();
+            clearInterval(countdownInterval);
+            TimeforCountdown();
+            btnSetTime.style.display = "block";
+            btnCancelCountdown.style.display = "none";
+        }
+    }, 1000)
+}
+// Countdown End in here
+
+// Universal Code
+function addZeroNumber(chooseCase, i) {
+    switch(chooseCase) {
+        case 'ALL' :
+            if ( i < 10 ) {
+                i = "0" + i
+            }
+            break;
+        case 'MILISECOND' :
+            if ( i < 100 && i > 10 ) {
+                i = "0" + i 
+            } else if ( i < 10 ) {
+                i = "00" + i
+            }
+    }
+    return i;
+}
+
+function TimeforCountdown(day = '00', hour = '00', minute = '00', second = '00') {
+    newDayTime.innerHTML = `${day}`;
+    newHourTime.innerHTML = `${hour}`;
+    newMinuteTime.innerHTML = `${minute}`;
+    newSecondTime.innerHTML = `${second}`;
+}
+
+// Sync To Local Storage// SYNC TO LOCAL STORAGE
+let arrCountdown;
+
+function SyncToLocalStorage(activity, date = 0, datetime = 0, tittle = 0) {
+    switch(activity) {
+        case 'SET' :
+            arrCountdown = {
+                'date' : `${date}`,
+                'datetime' : `${datetime}`,
+                'tittle' : `${tittle}`,
+                'active' : true,
+            };
+            break;
+        case 'CANCEL' :
+            arrCountdown = {
+                'date' : '',
+                'datetime' : '',
+                'tittle' : '',
+                'active' : false,
+            };
+            break;
+        default :
+            break;
+    }
+    localStorage.setItem('COUNTDOWN', JSON.stringify(arrCountdown))
+}
+// GET LOCAL STORAGE
+if (fromLocalStorage = JSON.parse(localStorage.getItem('COUNTDOWN'))) {
+    if ( fromLocalStorage['date'] === '' && fromLocalStorage['datetime'] ==='') {
+        TimeforCountdown();
+        btnSetTime.style.display = "block";
+        btnCancelTime.style.display = "none";
+    } else {
+        countdownTimer(fromLocalStorage['date'], fromLocalStorage['datetime'])
+        btnSetTime.style.display = "none";
+        btnCancelTime.style.display = "block";
+    }
+};
