@@ -1,12 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
 @font-face {
     font-family: 'Digital';
-    src: url('../font/digital-7.ttf');
+    src: url('../font/DS-DIGI.TTF');
 }
 
 :root {
     --fontpoppins : 'Poppins', sans-serif;
-    --fontdigital : 'Digital';
+    --fontdigital : 'Digital', sans-serif;
     --navbarColor : #fff;
     --menubarColor : #979797;
     --menubarTextColor : #333;
@@ -275,7 +275,7 @@ section.container .container-right section.container-time .tools {
     color: var(--navbarColor);
 }
 section.container .container-right section.container-time #timer {
-    font-family: var(--fontpoppins);
+    font-family: var(--fontdigital);
     display: flex;
     align-items: center;
     justify-content: center;
