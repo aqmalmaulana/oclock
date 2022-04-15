@@ -89,8 +89,8 @@ for ( let i = 0; i < menuBar.length;i++ ){
 // Menu Bar End in here
 
 // Fullscreen Start in here
-const btnClockFullScrn = document.querySelector('#clock .bi-arrows-fullscreen');
-const btnCountdownFullScrn = document.querySelector('#countdown .bi-arrows-fullscreen');
+const btnClockFullScrn = document.querySelector('#clock .fa-expand');
+const btnCountdownFullScrn = document.querySelector('#countdown .fa-expand');
 
 btnClockFullScrn.addEventListener('click', ()=> {
     FullscrnClock(containerClock)
@@ -193,9 +193,47 @@ function countdownTimer(date, datetime){
             btnSetTime.style.display = "block";
             btnCancelCountdown.style.display = "none";
         }
-    }, 1000)
+    }, 500)
 }
 // Countdown End in here
+
+// Clock Start in here
+/*
+ *
+ * Clock in here
+ *
+ */
+const dateClock = document.getElementById('date-clock');
+const monthClock = document.getElementById('month-clock');
+const yearClock = document.getElementById('year-clock');
+const hourClock = document.getElementById('hour-clock');
+const minuteClock = document.getElementById('minute-clock');
+const secondClock = document.getElementById('second-clock');
+const miliSecondClock = document.getElementById('milisecond-clock');
+const dayClock = document.getElementById('name-day')
+
+setInterval(()=>{
+    const arrDay = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', "Jum'at", 'Sabtu']
+    const clockTime = new Date();
+     // Get Date
+    dateClock.innerHTML = addZeroNumber('ALL',clockTime.getDate());
+    // Get Day
+    dayClock.innerHTML = addZeroNumber('ALL', arrDay[clockTime.getDay()])
+    // Get Month
+    monthClock.innerHTML = addZeroNumber('ALL',clockTime.getMonth() + 1);
+    // Get Year
+    yearClock.innerHTML = addZeroNumber('ALL',clockTime.getFullYear());
+    // Get Hour
+    hourClock.innerHTML = addZeroNumber('ALL',clockTime.getHours());
+    // Get Minute
+    minuteClock.innerHTML = addZeroNumber('ALL',clockTime.getMinutes());
+    // Get second
+    secondClock.innerHTML = addZeroNumber('ALL',clockTime.getSeconds());
+    // Get milisecond
+    // miliSecondClock.innerHTML = addZeroNumber('MILISECOND', clockTime.getMilliseconds());
+},1000)
+// Clock End in here
+
 
 // Universal Code
 function addZeroNumber(chooseCase, i) {

@@ -16,6 +16,7 @@
     --menubarColor : #979797;
     --menubarTextColor : #333;
     --sectioncolor : #fff;
+    --placeholdercolorRgba : rgba(0, 0, 0, 0.719);
     --placeholdercolor : #333;
     --formcolor : #979797;
     --position : 0px;
@@ -94,12 +95,12 @@ section.container .container-right section.container-time .time {
 section.container .container-right section.container-time .time .timer {
     color: var(--navbarColor);
     z-index: 2;
+    text-shadow: 2px 5px 10px var(--menubarColor);
 }
 section.container .container-right section.container-time .time p.placeholder {
     position: absolute;
     top: 0;
-    color: var(--placeholdercolor);
-    text-shadow: 2px 2px 5px var(--menubarTextColor);
+    color: var(--placeholdercolorRgba);
 }
 section.container .container-right section.container-time .time .timer-text {
     font-size: 30px;
@@ -408,10 +409,8 @@ div.container-form#container-form #form {
 #form .container-set-time section.input {
     display: grid;
     grid-template-columns: 1fr 1fr;
-
-}
-#form .container-set-time .section-input {
     padding: 20px;
+
 }
 #form .container-set-time .section-input .dateclock {
     display: flex;
@@ -531,9 +530,17 @@ input[type="time"]:before {
         flex-direction: column;
     }
     section.container .container-right section.container-time #timer .time {
-        font-size: 10em;
+        font-size: 7em;
     }
     section.container .container-right section.container-time #timer .colon#colon {
         display: none;
+    }
+    div.container-form#container-form #form {
+        width: 100%;
+        height: 100%;
+    }
+    #form .container-set-time section.input {
+        grid-template-columns: 1fr;
+        padding: 5px;
     }
 }
