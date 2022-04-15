@@ -551,6 +551,6 @@ input[type="time"]:before {
         padding: 5px;
     }
     #form .container-set-time .section-input .dateclock input {
-        width: 100vw;
+        width: 100%;
     }
 }
