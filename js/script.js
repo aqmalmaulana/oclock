@@ -191,9 +191,10 @@ function countdownTimer(date, datetime){
             clearInterval(countdownInterval);
             TimeforCountdown();
             btnSetTime.style.display = "block";
-            btnCancelCountdown.style.display = "none";
+            btnCancelTime.style.display = "none";
+            showNotification(getTittle.value);
         }
-    }, 500)
+    }, 100)
 }
 // Countdown End in here
 
@@ -298,3 +299,22 @@ if (fromLocalStorage = JSON.parse(localStorage.getItem('COUNTDOWN'))) {
         btnCancelTime.style.display = "block";
     }
 };
+
+// Notification
+function showNotification(message) {
+    const notification = Notification.permission;
+    if ( notification === "default" || notification === "denied" ) {
+        Notification.requestPermission().then(permission => {
+            textNotification(message)
+        })
+    } else if( notification === "granted" ) {
+        textNotification(message)
+    }
+}
+function textNotification(message) {
+    const NotificationText = new Notification('Your time has been caught', {
+        body : `${message}`,
+        icon : "img/Logo Web.png"
+    })
+}
+// Notification
