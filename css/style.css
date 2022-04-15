@@ -409,8 +409,10 @@ div.container-form#container-form #form {
 #form .container-set-time section.input {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    padding: 20px;
 
+}
+#form .container-set-time .section-input {
+    padding: 20px;
 }
 #form .container-set-time .section-input .dateclock {
     display: flex;
@@ -537,10 +539,16 @@ input[type="time"]:before {
     }
     div.container-form#container-form #form {
         width: 100%;
-        height: 100%;
+        height: 100vh;
     }
     #form .container-set-time section.input {
         grid-template-columns: 1fr;
+    }
+    #form h1 {
+        padding: 15px;
+    }
+    #form .container-set-time .section-input,
+    #form .container-set-time{
         padding: 5px;
     }
 }
