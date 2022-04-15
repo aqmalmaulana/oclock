@@ -1,12 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
 @font-face {
-    font-family: 'Digital';
+    font-family: 'Digital Dismay';
+    src: url('../font/Digital-Dismay.otf');
+}
+@font-face {
+    font-family: 'Digital 7';
     src: url('../font/digital-7.ttf');
 }
 
 :root {
     --fontpoppins : 'Poppins', sans-serif;
-    --fontdigital : 'Digital', sans-serif;
+    --fontdigitalDismay : 'Digital Dismay', sans-serif;
+    --fontdigital7 : 'Digital 7', sans-serif;
     --navbarColor : #fff;
     --menubarColor : #979797;
     --menubarTextColor : #333;
@@ -69,7 +74,7 @@ section.container .container-right section.container-time {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    font-family: var(--fontdigital);
+    font-family: var(--fontdigitalDismay);
     background-color: var(--menubarColor);
     position: relative;
 }
@@ -99,11 +104,15 @@ section.container .container-right section.container-time .time p.placeholder {
 section.container .container-right section.container-time .time .timer-text {
     font-size: 30px;
     color: var(--placeholdercolor);
+    font-family: var(--fontdigital7);
 }
 section.container .container-right section.container-time .colon {
     font-size: 15vw;
     text-shadow: 2px 2px 5px var(--menubarTextColor);
     color: var(--navbarColor);
+}
+#name-day {
+    font-family: var(--fontdigital7);
 }
 /* Universal Code */
 
