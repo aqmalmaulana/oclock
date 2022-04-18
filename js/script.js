@@ -1,3 +1,5 @@
+let fromLocalStorage = localStorage.getItem('COUNTDOWN')
+
 let getTimeNow = new Date();
 
 // Theme Mode Start In Here
@@ -154,6 +156,7 @@ btnSaveForm.addEventListener('click', ()=> {
     containerForm.style.display = "none";
     btnSetTime.style.display = "none";
     btnCancelTime.style.display = "block";
+    newTittle.innerText = `"${fromLocalStorage['tittle']}"`;
 })
 // Cancel Countdown Time
 btnCancelTime.addEventListener('click', ()=> {
@@ -162,6 +165,7 @@ btnCancelTime.addEventListener('click', ()=> {
     btnCancelTime.style.display = "none";
     SyncToLocalStorage('CANCEL')
     clearInterval(countdownInterval)
+    newTittle.innerText = `${fromLocalStorage['tittle']}`;
 })
 // Form End in here
 
@@ -293,11 +297,12 @@ if (fromLocalStorage = JSON.parse(localStorage.getItem('COUNTDOWN'))) {
         TimeforCountdown();
         btnSetTime.style.display = "block";
         btnCancelTime.style.display = "none";
+        newTittle.innerText = `${fromLocalStorage['tittle']}`;
     } else {
         countdownTimer(fromLocalStorage['date'], fromLocalStorage['datetime'],)
         btnSetTime.style.display = "none";
         btnCancelTime.style.display = "block";
-        newTittle.innerText = fromLocalStorage['tittle'];
+        newTittle.innerText = `${fromLocalStorage['tittle']}`;
     }
 };
 
