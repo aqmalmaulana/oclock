@@ -173,8 +173,9 @@ const newDayTime = document.getElementById('day');
 const newHourTime = document.getElementById('hour');
 const newMinuteTime = document.getElementById('minute');
 const newSecondTime = document.getElementById('second');
+const newTittle = document.querySelector('section.container .container-right section.container-time .tools h1');
 
-function countdownTimer(date, datetime){
+function countdownTimer(date, datetime, tittle){
     countdownInterval = setInterval(() => {
         getTimeNow = new Date().getTime();
         const getTimeUser = new Date(`${date}T${datetime}`).getTime();
@@ -192,7 +193,6 @@ function countdownTimer(date, datetime){
             TimeforCountdown();
             btnSetTime.style.display = "block";
             btnCancelTime.style.display = "none";
-            showNotification(getTittle.value);
         }
     }, 100)
 }
@@ -264,7 +264,7 @@ function TimeforCountdown(day = '00', hour = '00', minute = '00', second = '00')
 // Sync To Local Storage// SYNC TO LOCAL STORAGE
 let arrCountdown;
 
-function SyncToLocalStorage(activity, date = 0, datetime = 0, tittle = 0) {
+function SyncToLocalStorage(activity, date = 0, datetime = 0, tittle = '') {
     switch(activity) {
         case 'SET' :
             arrCountdown = {
@@ -294,27 +294,34 @@ if (fromLocalStorage = JSON.parse(localStorage.getItem('COUNTDOWN'))) {
         btnSetTime.style.display = "block";
         btnCancelTime.style.display = "none";
     } else {
-        countdownTimer(fromLocalStorage['date'], fromLocalStorage['datetime'])
+        countdownTimer(fromLocalStorage['date'], fromLocalStorage['datetime'],)
         btnSetTime.style.display = "none";
         btnCancelTime.style.display = "block";
+        newTittle.innerText = fromLocalStorage['tittle'];
     }
 };
 
 // Notification
-function showNotification(message) {
-    const notification = Notification.permission;
-    if ( notification === "default" || notification === "denied" ) {
-        Notification.requestPermission().then(permission => {
-            textNotification(message)
-        })
-    } else if( notification === "granted" ) {
-        textNotification(message)
-    }
-}
-function textNotification(message) {
-    const NotificationText = new Notification('Your time has been caught', {
-        body : `${message}`,
-        icon : "img/Logo Web.png"
-    })
-}
+// const notification = Notification.permission;
+// console.log(notification)
+// if ( notification === "default" || notification === "denied" ) {
+//     alert('Allow permission notification for get notification')
+//     Notification.requestPermission().then(permission => {
+//         if( notification === "granted" ) {
+//             console.log(notification)
+//     }})
+// } else if( notification === "granted" ) {
+//     console.log(notification)
+// }
+
+// function textNotification(message) {
+//     if ( notification === "granted" ) {
+//         const NotificationText = new Notification('Your time has been caught', {
+//             body : `${message}`,
+//             icon : "img/Logo Web.png"
+//         })
+//     } else {
+//         showNotification()
+//     }
+// }
 // Notification

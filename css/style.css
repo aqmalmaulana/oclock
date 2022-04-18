@@ -7,11 +7,16 @@
     font-family: 'Digital 7';
     src: url('../font/digital-7.ttf');
 }
+@font-face {
+    font-family: 'Disco';
+    src: url('../font/Disco-Society.otf');
+}
 
 :root {
     --fontpoppins : 'Poppins', sans-serif;
     --fontdigitalDismay : 'Digital Dismay', sans-serif;
     --fontdigital7 : 'Digital 7', sans-serif;
+    --fontDisco : 'Disco', sans-serif;
     --navbarColor : #fff;
     --menubarColor : #979797;
     --menubarTextColor : #333;
@@ -79,14 +84,19 @@ section.container .container-right section.container-time {
     background-color: var(--menubarColor);
     position: relative;
 }
-section.container .container-right section.container-time .tools {
+section.container .container-right section.container-time .tools i{
     position: absolute;
     top: 20px;
     left: 20px;
     cursor: pointer;
     color: var(--navbarColor);
 }
+section.container .container-right section.container-time .tools h1{
+    font-family: var(--fontDisco);
+    color: #eaeaea;
+    font-size: 4.5em;
 
+}
 section.container .container-right section.container-time .time {
     position: relative;
     display: flex;
